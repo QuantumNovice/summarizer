@@ -37,9 +37,9 @@ jobs:
       - name: Rename Binary
         run: |
           if [[ "${{ matrix.target }}" == "x86_64-unknown-linux-gnu" ]]; then
-            mv target/${{ matrix.target }}/release/my-rust-project my-rust-project-linux
+            mv target/${{ matrix.target }}/release/summarizer summarizer
           else
-            mv target/${{ matrix.target }}/release/my-rust-project.exe my-rust-project-windows.exe
+            mv target/${{ matrix.target }}/release/summarizer.exe summarizer.exe
           fi
 
       - name: Upload Artifact
@@ -47,8 +47,8 @@ jobs:
         with:
           name: ${{ matrix.target }}
           path: |
-            my-rust-project-linux
-            my-rust-project-windows.exe
+            summarizer
+            summarizer-windows.exe
 
   release:
     name: Create GitHub Release
